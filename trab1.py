@@ -1,6 +1,7 @@
 import numpy as np
 import skfuzzy as fuzz
 from skfuzzy import control as ctrl
+import matplotlib.pyplot as plt
 
 # Variáveis de entrada
 retorno_anual = ctrl.Antecedent(np.arange(0, 101, 1), 'retorno_anual')
@@ -46,22 +47,32 @@ decisao_investimento_ctrl = ctrl.ControlSystemSimulation(sistema_controle)
 # Casos de teste
 test_cases = [
     (75, 35, 80, 90),
-    (35, 55, 25, 97),
-    (55, 55, 55, 55),
-    (15, 90, 15, 15),
-    (90, 15, 15, 15),
-    (15, 15, 90, 15),
-    (15, 15, 15, 90),
-    (15, 15, 15, 15),
-    (90, 90, 90, 90),
-    (0, 0, 0, 0),
-    (100, 100, 100, 5),
+    # (35, 55, 25, 97),
+    # (55, 55, 55, 55),
+    # (15, 90, 15, 15),
+    # (90, 15, 15, 15),
+    # (15, 15, 90, 15),
+    # (15, 15, 15, 90),
+    # (15, 15, 15, 15),
+    # (90, 90, 90, 90),
+    # (0, 0, 0, 0),
+    # (100, 100, 100, 5),
 ]
 
 # Execute os testes
 for test_case in test_cases:
     decisao_investimento_ctrl.input['retorno_anual'], decisao_investimento_ctrl.input['volatilidade_ativo'], decisao_investimento_ctrl.input['relacao_lucro_prejuizo'], decisao_investimento_ctrl.input['analise_analistas'] = test_case
     decisao_investimento_ctrl.compute()
+
+    # Exibição dos gráficos
+    retorno_anual.view(sim=decisao_investimento_ctrl)
+    volatilidade_ativo.view(sim=decisao_investimento_ctrl)
+    relacao_lucro_prejuizo.view(sim=decisao_investimento_ctrl)
+    analise_analistas.view(sim=decisao_investimento_ctrl)
+    decisao_investimento.view(sim=decisao_investimento_ctrl)
+
     print(f"Caso de Teste: {test_case}")
     print(f"Decisao de Investimento: {decisao_investimento_ctrl.output['decisao_investimento']:.2f}%")
     print("-" * 40)
+
+plt.show()    
