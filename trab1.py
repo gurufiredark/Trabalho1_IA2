@@ -46,8 +46,8 @@ decisao_investimento_ctrl = ctrl.ControlSystemSimulation(sistema_controle)
 
 # Casos de teste
 test_cases = [
-    (75, 35, 80, 90),
-    # (35, 55, 25, 97),
+    (75, 35, 80, 90)
+    # (35, 55, 25, 97)
     # (55, 55, 55, 55),
     # (15, 90, 15, 15),
     # (90, 15, 15, 15),
@@ -59,7 +59,7 @@ test_cases = [
     # (100, 100, 100, 5),
 ]
 
-# Execute os testes
+# Execução dos testes
 for test_case in test_cases:
     decisao_investimento_ctrl.input['retorno_anual'], decisao_investimento_ctrl.input['volatilidade_ativo'], decisao_investimento_ctrl.input['relacao_lucro_prejuizo'], decisao_investimento_ctrl.input['analise_analistas'] = test_case
     decisao_investimento_ctrl.compute()
