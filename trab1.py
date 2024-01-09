@@ -46,12 +46,12 @@ decisao_investimento_ctrl = ctrl.ControlSystemSimulation(sistema_controle)
 
 # Casos de teste
 test_cases = [
-    (75, 35, 80, 90)
+    # (75, 35, 80, 90),
     # (35, 55, 25, 97)
     # (55, 55, 55, 55),
-    # (15, 90, 15, 15),
+    #(15, 90, 15, 15)  #teste usado no relatorio
     # (90, 15, 15, 15),
-    # (15, 15, 90, 15),
+    (15, 15, 90, 15)   #teste usado no relatorio
     # (15, 15, 15, 90),
     # (15, 15, 15, 15),
     # (90, 90, 90, 90),
